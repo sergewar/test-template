@@ -20,6 +20,13 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.sss.testing.utils</groupId>
+            <artifactId>webdriver-provider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -43,17 +50,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
@@ -107,7 +103,14 @@
                     <stopKey>stop</stopKey>
                     <stopPort>1234</stopPort>
                 </configuration>
-            </plugin>
+            </plugin><plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.6</source>
+                <target>1.6</target>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 
@@ -115,9 +118,9 @@
         <excludeDefaults>true</excludeDefaults>
         <plugins>
             <plugin>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>2.9</version>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
                 <configuration>
                     <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
                     <reportDirectory>${project.basedir}/allure-report</reportDirectory>
@@ -126,7 +129,6 @@
             </plugin>
         </plugins>
     </reporting>
-
 
 
 </project>

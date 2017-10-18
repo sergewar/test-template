@@ -15,5 +15,6 @@ public class StepsOne extends AbstractSteps {
     @Step("annotation on method one")
     public void methodOne() {
         LOGGER.info(secretValue);
+        getWD().navigate().to("http://www.google.com");
     }
 }

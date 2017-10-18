@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:utils="http://www.springframework.org/schema/util"
+       xmlns:util="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <utils:properties id="appProperties" location="springcontext.properties"/>
+
+    <utils:properties id="systemProperties" location="system.properties"/>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetClass" value="java.lang.System"/>
+                <property name="targetMethod" value="getProperties"/>
+            </bean>
+        </property>
+        <property name="targetMethod" value="putAll"/>
+        <property name="arguments" ref="systemProperties"/>
+    </bean>
+
+    <bean id="allProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="propertiesArray">
+            <list>
+                <!--webdriver property-->
+                <ref bean="webdriverProperties"/>
+
+                <!--DB properties-->
+
+                <!--!!!!! bean appProperties should be the lass in order !!!!!-->
+                <!--because appProperties override props from another property beans-->
+                <ref bean="appProperties"/>
+            </list>
+        </property>
+    </bean>
+
+    <import resource="classpath*:webdriver-context.xml"/>
+    <import resource="context-steps.xml"/>
+
+
+    <!-- save environment properties for Allure via listener-->
+    <bean id="eventListenerBean" class="com.sss.steps.common.ApplicationListenerBean" lazy-init="false"/>
+</beans>

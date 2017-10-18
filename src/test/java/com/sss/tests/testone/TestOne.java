@@ -1,8 +1,6 @@
 package com.sss.tests.testone;
 
-import com.sss.steps.common.AbstractSteps;
 import com.sss.steps.stepsone.StepsOne;
-import com.sss.steps.stepstwo.StepsTwo;
 import com.sss.tests.common.AbstractTest;
 import io.qameta.allure.Description;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class TestOne extends AbstractTest {
     }
 
     @Test
-    @Description("")
+    @Description("One3")
     public void realTestOne3() {
         stepsOne.methodOne();
     }
