@@ -13,7 +13,7 @@ public abstract class AbstractPO extends AbstractPageObject {
         super(webDriver, container);
     }
 
-    public WebDriver getWD() {
+    protected WebDriver getWD() {
         return getWebDriver();
     }
 }
