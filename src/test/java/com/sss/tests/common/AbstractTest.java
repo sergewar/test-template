@@ -10,7 +10,7 @@ import org.springframework.test.annotation.DirtiesContext;
  */
 @DirtiesContext(hierarchyMode = DirtiesContext.HierarchyMode.CURRENT_LEVEL)
 public abstract class AbstractTest extends CleanContext {
-    @Autowired
-    @Qualifier("webdriverInstance")
-    private WebDriver wdInstance;
+//    @Autowired
+//    @Qualifier("selenideCustomized")
+//    private WebDriver wdInstance;
 }

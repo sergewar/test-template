@@ -1,5 +1,7 @@
 package com.sss.steps.stepsone;
 
+import com.codeborne.selenide.WebDriverProvider;
+import com.codeborne.selenide.WebDriverRunner;
 import com.sss.pageobjects.GPage;
 import com.sss.steps.common.AbstractSteps;
 import io.qameta.allure.Step;
@@ -17,6 +19,8 @@ public class StepsOne extends AbstractSteps {
     public void methodOne() {
         LOGGER.info(secretValue);
         getWD().navigate().to("http://www.google.com");
+        System.out.println(WebDriverRunner.getWebDriver().getPageSource());
+        System.out.println("--------------------------------------------------------------");
         System.out.println(new GPage(getWD()).getHtml());
     }
 }
