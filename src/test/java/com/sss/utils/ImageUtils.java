@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Танечка on 23.10.2017.
+ * Created by Sergewar on 23.10.2017.
  */
 public class ImageUtils {
     public static void createGif(String filePath,List<BufferedImage> slides) throws IOException {
