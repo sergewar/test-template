@@ -5,6 +5,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.sss.pageobjects.GPage;
 import com.sss.steps.common.AbstractSteps;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +20,12 @@ public class StepsOne extends AbstractSteps {
     public void methodOne() {
         LOGGER.info(secretValue);
         getWD().navigate().to("http://www.google.com");
+        getEyes().checkWindow("google main page");
         System.out.println(WebDriverRunner.getWebDriver().getPageSource());
         System.out.println("--------------------------------------------------------------");
         System.out.println(new GPage(getWD()).getHtml());
+        getWD().navigate().to("http://www.yandex.ru");
+        getEyes().checkWindow("yandex main page");
+        getEyes().checkElement(By.cssSelector("html"));
     }
 }

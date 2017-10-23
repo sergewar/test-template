@@ -1,5 +1,8 @@
 package com.sss.tests.common;
 
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -12,4 +15,11 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
         @ContextConfiguration("classpath:context-dynamic.xml")
 })
 abstract class CleanContext extends AbstractTestNGSpringContextTests {
+    @Autowired
+    @Qualifier("selenideCustomized")
+    private WebDriver wdInstance;
+
+    public WebDriver getWdInstance() {
+        return wdInstance;
+    }
 }

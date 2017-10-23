@@ -17,5 +17,6 @@ public class StepsTwo extends AbstractSteps {
     public void methodTwo() {
         LOGGER.info(secretValue);
         getWD().navigate().to("http://www.ya.ru");
+        getEyes().checkWindow("ya short");
     }
 }
