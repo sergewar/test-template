@@ -7,6 +7,8 @@ import io.qameta.allure.Description;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 /**
  * Created by Sergewar on 16.10.2017.
  */
@@ -29,10 +31,10 @@ public class TestOne extends AbstractTest {
         stepsTwo.methodTwo();
     }
 
-//    @Test
+    @Test
     @Description("One3")
-    public void realTestOne3() {
-        stepsOne.methodOne();
+    public void realTestOne3() throws IOException {
+        stepsOne.methodTwo();
     }
 
 //    @Test
