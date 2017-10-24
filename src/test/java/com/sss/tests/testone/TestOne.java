@@ -19,13 +19,13 @@ public class TestOne extends AbstractTest {
     @Autowired
     private StepsTwo stepsTwo;
 
-    @Test
+//    @Test
     @Description("One")
     public void realTestOne() {
         stepsOne.methodOne();
     }
 
-    @Test
+//    @Test
     @Description("One2()")
     public void realTestOne2() {
         stepsTwo.methodTwo();
