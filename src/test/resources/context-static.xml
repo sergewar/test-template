@@ -30,7 +30,7 @@
         </property>
     </bean>
 
-    <import resource="classpath*:webdriver-context.xml"/>
+    <import resource="classpath*:webdriver-selenide-context.xml"/>
     <import resource="context-steps.xml"/>
 
 

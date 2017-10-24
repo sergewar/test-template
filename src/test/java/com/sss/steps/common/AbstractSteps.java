@@ -1,5 +1,7 @@
 package com.sss.steps.common;
 
+import com.applitools.eyes.selenium.Eyes;
+import com.sss.tests.common.EyesProvider;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,10 +11,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public abstract class AbstractSteps {
     @Autowired
-    @Qualifier("webdriverInstance")
+    @Qualifier("selenideCustomized")
     private WebDriver wdInstance;
 
     public WebDriver getWD() {
         return wdInstance;
+    }
+
+    public Eyes getEyes() {
+        return EyesProvider.getEyes();
     }
 }
