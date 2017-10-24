@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public abstract class AbstractSteps {
     @Autowired
-    @Qualifier("selenideCustomized")
+    @Qualifier("webdriverInstance")
     private WebDriver wdInstance;
 
     public WebDriver getWD() {

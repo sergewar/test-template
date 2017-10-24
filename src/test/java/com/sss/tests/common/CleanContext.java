@@ -16,7 +16,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 })
 abstract class CleanContext extends AbstractTestNGSpringContextTests {
     @Autowired
-    @Qualifier("selenideCustomized")
+    @Qualifier("webdriverInstance")
     private WebDriver wdInstance;
 
     public WebDriver getWdInstance() {
