@@ -17,7 +17,7 @@
         <testng.version>6.8</testng.version>
         <allure.testng.version>2.0-BETA19</allure.testng.version>
         <allure.java.commons.version>2.0-BETA19</allure.java.commons.version>
-        <allure.report.dir>${project.reporting.outputDirectory}\allure-report</allure.report.dir>
+        <allure.results.dir>${project.build.directory}/allure-results</allure.results.dir>
     </properties>
 
 
@@ -134,6 +134,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20.1</version>
                 <configuration>
+                    <systemProperties>
+                        <allure.results.directory>${allure.results.dir}</allure.results.directory>
+                    </systemProperties>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
@@ -177,7 +180,6 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.9</version>
                 <configuration>
-                     <reportDirectory>${allure.report.dir}</reportDirectory>
                     <reportVersion>2.4.1</reportVersion>
                 </configuration>
             </plugin>
