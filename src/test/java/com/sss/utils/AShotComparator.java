@@ -50,10 +50,14 @@ public class AShotComparator {
 
         boolean hasDifference = diff.hasDiff();
         if (hasDifference) {
-            String screenshotFileName = getScreenShotName(driver);
-            File diffFile = new File(screenshotFileName + "diffImage.png");
-            File marketFile = new File(screenshotFileName + "marked.png");
-            File transparentMarketFile = new File(screenshotFileName + "transparentMarked.png");
+            String screenshotDirectory = "screenshots";
+            new File(screenshotDirectory).mkdirs();
+
+            String screenshotFileNamePrefix = getScreenShotName(driver);
+            String scrPathPref = screenshotDirectory + System.getProperty("file.separator") + screenshotFileNamePrefix + "_";
+            File diffFile = new File(scrPathPref + "diffImage.png");
+            File marketFile = new File(scrPathPref + "marked.png");
+            File transparentMarketFile = new File(scrPathPref + "transparentMarked.png");
             BufferedImage diffImage = diff.getDiffImage();
             BufferedImage markedImage = diff.getMarkedImage();
             BufferedImage transparentMarkedImage = diff.getTransparentMarkedImage();
@@ -67,7 +71,7 @@ public class AShotComparator {
                 ImageIO.write(diffImage, "png", diffFile);
                 ImageIO.write(markedImage, "png", marketFile);
                 ImageIO.write(transparentMarkedImage, "png", transparentMarketFile);
-                createGif(screenshotFileName + "FinalGif.gif", slides);
+                createGif(scrPathPref + "FinalGif.gif", slides);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,7 +96,7 @@ public class AShotComparator {
                 domain + "_" +
 //         get locale: var language = window.navigator.userLanguage || window.navigator.language;
                         ((JavascriptExecutor) driver).executeScript("return window.navigator.language") + "_" +
-                        driver.manage().window().getSize().toString() + "_" +
+                        driver.manage().window().getSize().toString().replace(" ", "") + "_" +
                         now.format(dtf);
         return screenshotFileName;
     }
