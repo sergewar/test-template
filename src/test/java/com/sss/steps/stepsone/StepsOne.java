@@ -39,20 +39,25 @@ public class StepsOne extends AbstractSteps {
     @Step("annotation on method one")
     public void methodTwo() throws IOException {
         getWD().navigate().to("http://www.google.com");
-
+        getWD().findElement(By.cssSelector("body")).click();
         File originalScreenshot = new File("google.png");
         WebElement elementToShot = getWD().findElement(By.cssSelector("body"));
 
         Set<By> setIgnoredElements = new HashSet<>();
         setIgnoredElements.add(By.cssSelector(".banner"));
         setIgnoredElements.add(By.cssSelector(".userPhoto"));
+//        setIgnoredElements.add(By.cssSelector("div#gs_lc0"));
+//        setIgnoredElements.add(By.cssSelector("input#lst-ib"));
         AShot ashot = new AShot()
 //                .coordsProvider(new WebDriverCoordsProvider())
                 .ignoredElements(setIgnoredElements);
-//        Screenshot scrnshot = ashot.takeScreenshot(getWD(), elementToShot);
+//        Screenshot scrnshot = ashot
+//                  .coordsProvider(new WebDriverCoordsProvider())
+//                  .takeScreenshot(getWD(), elementToShot);
 //        ImageIO.write(scrnshot.getImage(), "PNG", originalScreenshot);
         boolean isTheSame = new AShotComparator().comparator(originalScreenshot, ashot, getWD(), elementToShot);
         LOGGER.info("" + isTheSame);
+
     }
 
 
