@@ -38,9 +38,9 @@ public class StepsOne extends AbstractSteps {
 
     @Step("annotation on method one")
     public void methodTwo() throws IOException {
-        getWD().navigate().to("http://www.google.com");
+        getWD().navigate().to("http://www.yandex.ru");
         getWD().findElement(By.cssSelector("body")).click();
-        File originalScreenshot = new File("google.png");
+        File originalScreenshot = new File("yandex.png");
         WebElement elementToShot = getWD().findElement(By.cssSelector("body"));
 
         Set<By> setIgnoredElements = new HashSet<>();
@@ -49,9 +49,11 @@ public class StepsOne extends AbstractSteps {
 //        setIgnoredElements.add(By.cssSelector("div#gs_lc0"));
 //        setIgnoredElements.add(By.cssSelector("input#lst-ib"));
         AShot ashot = new AShot()
+                ;
 //                .coordsProvider(new WebDriverCoordsProvider())
-                .ignoredElements(setIgnoredElements);
+//                .ignoredElements(setIgnoredElements);
 //        Screenshot scrnshot = ashot
+//                .shootingStrategy(ShootingStrategies.viewportPasting(50))
 //                  .coordsProvider(new WebDriverCoordsProvider())
 //                  .takeScreenshot(getWD(), elementToShot);
 //        ImageIO.write(scrnshot.getImage(), "PNG", originalScreenshot);
